@@ -13,9 +13,12 @@ class test_task(unittest.TestCase):
         getString.return_value = 18
         self.assertEqual(18, get_input_integer("Enter integer"))
 
-    def test_get_game_info(self):
+    @patch("card_game.communication.ConsoleInOut.get_string")
+    def test_get_game_info(self, getString):
         #Sub-task 2 – Mock Console Game Info
-        pass
+        getString.return_value = ["Derek", "3"]
+        print(get_game_info())
+        #self.assertEqual(3, get_game_info())
 
     def test_get_integer_max_attempts(self):
         #Sub-task 3 – Mock Console Input With Built In
